@@ -2,7 +2,7 @@
     "current": "Blue",
     "presets": {
         "Blue": {
-            "bulk_order_enabled": false,
+            "bulk_order_enabled": true,
             "ajax_cart_enable": true,
             "ajax_cart_method": "Modal",
             "cart_notes_enable": false,

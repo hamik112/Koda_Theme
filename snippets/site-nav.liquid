@@ -1,8 +1,11 @@
 <ul class="site-nav" id="accessibleNav">
     {% unless linklists.main-menu.links.first.url == '/' %}
-        <li class="large--hide">
-            <a href="{{ '/' | absolute_url }}">{{ 'general.breadcrumbs.home' | t }}</a>
-        </li>
+      {% comment %}
+          Having trouble getting this to hide in mobile
+          <li class="large--hide">
+              <a href="{{ '/' | absolute_url }}">{{ 'general.breadcrumbs.home' | t }}</a>
+          </li>
+      {% endcomment %}
     {% endunless %}
     {% for link in linklists.main-menu.links %}
         {% assign child_list_handle = link.title | handleize %}

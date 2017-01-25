@@ -30,3 +30,19 @@ storefrontApp.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.interceptors.push('httpErrorInterceptor');
 
 }]);
+
+$(document).ready(function () {
+    //AWW this code hides and shows the seach form by using a search icon element
+    $("#cart-icon").click(function () {
+        $(".special").show();
+        $("#cart-icon").hide();
+    });
+    $(".special").focusout(function () {
+        $(".special").hide();
+        $("#cart-icon").show();
+    });
+    //
+    $(".main-content:has(#HomePageSlider)").css('padding-top', '0');
+    $("main.wrapper:has(#HomePageSlider)").css('max-width', '1800px');
+    $("main.wrapper:has(#HomePageSlider)").css('text-align', 'center');
+});

@@ -24,6 +24,11 @@
           </p>
 
           <div class="rte">
+
+		  	{% if article.youtube != blank %}
+				<iframe width="560" height="349" id="" class="" src="{{ article.youtube }}" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+			{% endif %}
+
             {% if article.excerpt.size > 0 %}
               {{ article.excerpt }}
             {% else %}

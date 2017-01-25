@@ -124,7 +124,8 @@ $successGreen: #0a942a;
 // Width variables
 $siteWidth: 1060px;
 $gutter: 30px;
-$gridGutter: 30px;
+//AWW changed this from 30 to zero
+$gridGutter: 0;
 $maxWidthBp: $siteWidth + $gutter*2;
 
 // Radius
@@ -716,7 +717,7 @@ html, body {
 }
 
 html {
-  background-color: $colorFooterBg;
+  background-color: #FFFFFF;
 }
 
 body {
@@ -830,14 +831,26 @@ body {
   // @include prefix('background-size', 'cover');
 // }
 
+// AWW use this instead of wrapper for header to get full width
+.header-style {	
+	margin-left: 20px;
+	margin-right: 25px;
+}
+//AWW use this class to make links in header accent font instead of base front from <body> tag
+.my_class {
+	font-family: $accentFontStackBold;
+    font-weight: $accentFontWeight;
+    font-size: {{ settings.type_button_size }};
+}
+
 .wrapper {
   @include clearfix();
   max-width: $siteWidth;
   margin: 0 auto;
-  padding: 0 $gutter/2;
+  padding: 0 0;
 
   @include at-query ($min, $postSmall) {
-    padding: 0 $gutter;
+    padding: 0 0;
   }
 }
 
@@ -1807,6 +1820,7 @@ label.error {
 .icon-instagram:before { content: "\69"; }
 .icon-interac:before { content: "\49"; }
 .icon-jcb:before { content: "\4a"; }
+.icon-linkedin:before { content: "\46"; }
 .icon-maestro:before { content: "\6d"; }
 .icon-master:before { content: "\4d"; }
 .icon-paypal:before { content: "\50"; }
@@ -1825,11 +1839,11 @@ label.error {
 /*================ Button icons ================*/
 .icon-cart {
   line-height: 0;
-
+  //AWW Smaller cart icon
   &:before {
     position: relative;
     top: -2px;
-    font-size: 19px;
+    font-size: 16px;
     line-height: 12px;
     vertical-align: middle;
     margin-right: 6px;
@@ -2088,7 +2102,9 @@ $shareBorderColor: #ececec;
   .icon-facebook {
     color: #3b5998;
   }
-
+  .icon-linkedin {
+	color: #3b5998;
+  }
   .icon-twitter {
     color: #00aced;
   }
@@ -2183,13 +2199,14 @@ $shareBorderColor: #ececec;
 /*============================================================================
   #Site Header
 ==============================================================================*/
+//AWW make site header shorter here
 .site-header {
-  padding: $gutter/2 0;
+  padding: 0 0;
   background-color: $headerBackground;
   color: $headerText;
 
   @include at-query ($min, $large) {
-    padding: $gutter 0;
+    padding: 0 0;
   }
 
   .site-header--text-links a {
@@ -2214,13 +2231,13 @@ $shareBorderColor: #ececec;
     }
   }
 }
-
+//AWW  make logo area shorter here
 .header-logo {
-  margin: $gutter auto;
+  margin: 4px auto;
   max-width: {{ settings.logo_max_width }}px;
 
   @include at-query ($min, $large) {
-    margin: 15px 0;
+    margin: 4px 0;
   }
 
   a,
@@ -2239,10 +2256,11 @@ $shareBorderColor: #ececec;
   }
 }
 
+//AWW Keep font of Header text links the same
 .site-header--text-links {
   display: inline-block;
-  font-size: 0.85em;
-  margin-bottom: $gutter/2;
+  font-size: 1em;
+  margin-bottom: 0;
 
   a {
     font-weight: bold;
@@ -2253,21 +2271,25 @@ $shareBorderColor: #ececec;
   display: inline-block;
   margin-left: $gutter/2;
 }
-
+//AWW increase space between login and create account
 .site-header--spacer {
-  padding: 0 5px;
+  padding: 0 10px;
 }
-
+//AWW changed the cart button padding here
 .header-cart-btn {
   @extend .btn;
   position: relative;
   line-height: 26px;
-  padding-bottom: 10px;
+  padding-bottom: 0;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-top: 0px;
   border: 0 none;
   margin-left: $gutter/2;
   vertical-align: top;
-  background-color: $headerButtonAndSearch;
-  color: color-control($headerButtonAndSearch);
+  background-color: {{settings.color_header_background}};
+  color: {{settings.color_header_text}};
 
   @include at-query ($max, $medium) {
     display: none;
@@ -2275,17 +2297,17 @@ $shareBorderColor: #ececec;
 
   &:hover,
   &:focus {
-    color: color-control($headerButtonAndSearch);
-    background-color: darken($headerButtonAndSearch, 5%);
+    color: darken({{settings.color_header_text}}, 5%);
+    background-color: {{settings.color_header_background}};
   }
 }
-
+//AWW move cart count to right
 #cartCount,
 #quoteRequestCount {
   display: none;
   position: absolute;
   top: -5px;
-  right: -5px;
+  right: -19px;
   text-align: center;
   background-color: $colorAccent;
   color: $headerBackground;
@@ -2306,8 +2328,8 @@ $shareBorderColor: #ececec;
 .cartCount {
     display: inline-block;
     text-align: center;
-    background-color: #ffea00;
-    color: #204a80;
+    background-color:  $colorAccent;
+    color: $headerBackground;
     font-weight: 700;
     font-size: 13px;
     min-width: 20px;
@@ -2315,15 +2337,15 @@ $shareBorderColor: #ececec;
     line-height: 20px;
     border-radius: 20px;
 }
-
+//AWW make serach bar less wide and icon smaller here
 .search-bar {
   position: relative;
-  max-width: 60%;
+  max-width: 50%;
   width: 100%;
   margin: 0 auto $gutter;
 
   .icon-search {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   .search-bar
@@ -2336,12 +2358,12 @@ $shareBorderColor: #ececec;
     max-width: 100%;
     margin-bottom: $gutter/2;
   }
-
+  //AWW Changed the Search padding here
   input[type="text"],
   input[type="search"] {
     width: 100%;
     margin-bottom: 0;
-    padding: 10px 45px 10px 10px; // 45 is same as submit button width
+    padding: 1px 45px 1px 4px; // 45 is same as submit button width
     font: {
       family: $accentFontStackBold;
       weight: $accentFontWeight;
@@ -2371,11 +2393,11 @@ $shareBorderColor: #ececec;
   input[type="submit"] {
     text-indent: -9999px;
   }
-
+  //AWW Adjust top spacing of search area
   .site-header & {
     display: none;
     margin-bottom: 0;
-
+	margin-top: 0px;
     @include at-query ($min, $large) {
       display: inline-block;
     }
@@ -2384,7 +2406,7 @@ $shareBorderColor: #ececec;
     input[type="search"] {
       border: 0 none;
       background-color: $headerButtonAndSearch;
-      color: color-control($headerButtonAndSearch);
+      color: {{settings.color_header_text}};
       @include transition(background-color 0.2s ease-out);
       &:hover, &:focus {
         background-color: darken($headerButtonAndSearch, 5%);
@@ -2408,6 +2430,28 @@ $shareBorderColor: #ececec;
 /*============================================================================
   #Site Nav and Dropdowns
 ==============================================================================*/
+//AWW new class to hold menu in header, hide in mobile
+.top-nav {
+	@include at-query($max, $medium) {
+		display:none;
+	}
+}
+
+.special {
+	@include at-query($max, $medium) {
+		display:block;
+	}
+	@include at-query($min, $medium) {
+		display:none;
+	}
+}
+
+#cart-icon {
+	@include at-query($max, $medium) {
+		display:none;
+	}
+}
+
 .nav-bar {
   top: 110%;
   bottom: 0;
@@ -2422,6 +2466,10 @@ $shareBorderColor: #ececec;
     &:focus {
       opacity: 0.9;
     }
+  }
+  //AWW hide the std navbar in medium or higher
+  @include at-query($min, $medium) {
+	display:none;
   }
 }
 
@@ -2441,11 +2489,16 @@ $shareBorderColor: #ececec;
     margin: 0;
     display: block;
   }
-
+  //AWW changed navbar padding here for desktop and added hover darken effect
   a {
     display: block;
     text-decoration: none;
-    padding: $gutter/2;
+    padding: 8px;
+	color: {{ settings.color_nav_text }};
+
+	 &:hover {
+      color: darken({{ settings.color_nav_text }}, 15%);
+    }
   }
 
   .customer-navlink {
@@ -2456,6 +2509,8 @@ $shareBorderColor: #ececec;
     margin-top: -1px;
   }
 }
+
+
 
 /*================ Small screen nav styles ================*/
 @include at-query ($max, $small) {
@@ -2481,9 +2536,9 @@ $shareBorderColor: #ececec;
       -webkit-overflow-scrolling: touch;
       @include transition(all 450ms cubic-bezier(0.47, 0, 0, 0.95));
     }
-
+	//AWW Made header shorter here
     .wrapper {
-      padding: $gutter/2 0 0;
+      padding: 0 0 0;
     }
 
     .search-bar {
@@ -2726,7 +2781,7 @@ $shareBorderColor: #ececec;
   color: $colorFooterText;
 
   @include at-query ($min, $large) {
-    padding: $gutter*2 0 $gutter/5;
+    padding: 45px 0 $gutter/5;
   }
 
   h3 {
@@ -2741,6 +2796,10 @@ $shareBorderColor: #ececec;
     }
   }
 }
+//AWW added to keep footer wider
+footer .wrapper {
+	max-width: 1800px;
+}
 
 .legal-links {
   margin-bottom: 0;
@@ -2754,6 +2813,10 @@ $shareBorderColor: #ececec;
     font-size: 13px;
     line-height: 30px;
   }
+}
+
+footer .grid--full {
+	text-align: center;
 }
 
 /*============================================================================
@@ -3711,7 +3774,7 @@ html[xmlns] .slides { display: block; }
 .head-top
 {
 	background: $headerBackgroundTop;
-    height: 30px;
+    height: 0px;
     position: relative;
     z-index: 99998;
 }
@@ -3729,6 +3792,7 @@ html[xmlns] .slides { display: block; }
 	font-size: 12px;
     line-height: 30px;
     margin-right: 5px;
+	display: none;
 }
 
 .head-switch:hover

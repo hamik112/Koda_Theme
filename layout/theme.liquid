@@ -54,8 +54,13 @@
         {% include 'top-header-selector' %}
         {% endif %}
         <header class="site-header" role="banner">
-            <div class="wrapper">
+            <div class="header-style">
                 <div class="grid--full">
+                    <div class="grid-item large--one-third">
+                        <div class="top-nav">
+                            {% include 'site-nav' %}
+                        </div>
+                    </div>
                     <div class="grid-item large--one-third">
                         {% if template == 'index' %}
                         <h1 class="header-logo" itemscope itemtype="http://schema.org/Organization">
@@ -75,7 +80,10 @@
                     </div>
                     {% endif %}
                 </div>
-                <div class="grid-item large--two-third text-center large--text-right">
+                <div class="grid-item large--one-third text-center large--text-right">
+
+                     {% include 'search-bar' %}
+
                     {% if settings.header_message != blank or shop.customer_accounts_enabled %}
                     <div class="site-header--text-links{% if settings.header_message == blank %} medium-down--hide{% endif %}">
                         {% if settings.header_message != blank %}
@@ -100,7 +108,7 @@
                         {% endif %}
                         {% endcomment %}
 
-                        <span class="site-header--meta-links medium-down--hide">
+                        <span class="site-header--meta-links medium-down--hide my_class">
                             <span ng-if="customer && customer.isRegisteredUser && customer.operatorUserName" ng-cloak>
                                 {{ 'layout.customer.logged_in_on_behalf_of_label' | t }} <a href="{{ 'account' | absolute_url }}" ng-bind="customer.firstName"></a> &middot; {{ 'layout.customer.log_out' | t | customer_logout_link }}
                             </span>
@@ -115,9 +123,9 @@
                         </span>
 
                     </div>
-                    <br class="medium-down--hide" />
+                   <!-- <br class="medium-down--hide" /> -->
                     {% endif %}
-                    {% include 'search-bar' %}
+                   
                     {% if shop.quotes_enabled %}
                     <a class="header-cart-btn cart-toggle" ng-controller="actualQuoteRequestBarController" ng-click="outerRedirect(baseUrl + 'quoterequest/#/' + actualQuoteRequest.number)">
                         <span class="fa fa-calculator"></span>
@@ -125,7 +133,7 @@
                     </a>
                     {% endif %}
                 <a class="header-cart-btn cart-toggle" href="{{ 'cart' | absolute_url }}" ng-controller="cartBarController">
-                        <span class="icon icon-cart"></span>
+                     <!--   <span class="icon icon-cart"></span> -->
                     {{ 'layout.cart.cart' | t }} <span id="cartCount" ng-class="{ 'visible-count': cartItemsCount > 0 }" ng-bind="cartItemsCount" ng-cloak></span>
                     </a>
                 </div>

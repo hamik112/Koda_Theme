@@ -10,12 +10,12 @@
 {% endunless %}
 
 {% if settings.home_featured_collections_enable %}
-  <div class="section-header">
+ <!-- <div class="section-header">
     <h2 class="h1 section-header--left">{{ 'homepage.featured_collections.heading' | t }}</h2>
     <div class="section-header--right">
       <a href="{{ '/collections' | absolute_url }}">{{ 'homepage.featured_collections.more_categories' | t }} &rsaquo;</a>
     </div>
-  </div>
+  </div>-->
   <div class="grid-uniform text-center row-negative-bottom">
 
     {% assign index = 0 %}
@@ -199,7 +199,9 @@
       </div>
     </div>
   {% else %}
+  <div class="featured" style="display: inline-block; max-width: 1000px;">
     {% include 'featured-row' %}
+  </div>
   {% endif %}
 {% endunless %}
 
